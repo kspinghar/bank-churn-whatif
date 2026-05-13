@@ -1,0 +1,111 @@
+{
+  "num_cols": [
+    "CreditScore",
+    "Age",
+    "Tenure",
+    "Balance",
+    "NumOfProducts",
+    "EstimatedSalary",
+    "Satisfaction Score",
+    "Point Earned"
+  ],
+  "cat_cols": [
+    "Location",
+    "Gender",
+    "HasCreditCard",
+    "IsActiveMember",
+    "Card Type"
+  ],
+  "num_stats": {
+    "CreditScore": {
+      "min": 350.0,
+      "max": 850.0,
+      "median": 652.0,
+      "step": 1.0
+    },
+    "Age": {
+      "min": 18.0,
+      "max": 92.0,
+      "median": 37.0,
+      "step": 1.0
+    },
+    "Tenure": {
+      "min": 0.0,
+      "max": 10.0,
+      "median": 5.0,
+      "step": 1.0
+    },
+    "Balance": {
+      "min": 0.0,
+      "max": 250898.09,
+      "median": 97258.33,
+      "step": 0.01
+    },
+    "NumOfProducts": {
+      "min": 1.0,
+      "max": 4.0,
+      "median": 1.0,
+      "step": 1.0
+    },
+    "EstimatedSalary": {
+      "min": 11.58,
+      "max": 199992.48,
+      "median": 100168.23999999999,
+      "step": 0.01
+    },
+    "Satisfaction Score": {
+      "min": 1.0,
+      "max": 5.0,
+      "median": 3.0,
+      "step": 1.0
+    },
+    "Point Earned": {
+      "min": 119.0,
+      "max": 1000.0,
+      "median": 605.0,
+      "step": 1.0
+    }
+  },
+  "cat_choices": {
+    "Location": [
+      "France",
+      "Germany",
+      "Spain"
+    ],
+    "Gender": [
+      "Female",
+      "Male"
+    ],
+    "HasCreditCard": [
+      "0",
+      "1"
+    ],
+    "IsActiveMember": [
+      "0",
+      "1"
+    ],
+    "Card Type": [
+      "DIAMOND",
+      "GOLD",
+      "PLATINUM",
+      "SILVER"
+    ]
+  },
+  "target": "Exited",
+  "n_train_rows": 9980,
+  "feature_order": [
+    "CreditScore",
+    "Age",
+    "Tenure",
+    "Balance",
+    "NumOfProducts",
+    "EstimatedSalary",
+    "Satisfaction Score",
+    "Point Earned",
+    "Location",
+    "Gender",
+    "HasCreditCard",
+    "IsActiveMember",
+    "Card Type"
+  ]
+}
