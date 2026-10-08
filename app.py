@@ -1,5 +1,5 @@
 """
-app.py — Bank Customer Churn what-if calculator.
+app.py: Bank Customer Churn what-if calculator.
 
 Pick a real customer → their attributes populate the inputs → adjust any input
 and the predicted churn probability + driver breakdown update live (no Predict
@@ -38,7 +38,7 @@ TARGET = meta["target"]
 FEATURE_NAMES = interp["feature_names"]
 COEFS = np.array(interp["coefficients"])
 
-print(f"Loaded — pipeline + {len(sample)} sample customers.")
+print(f"Loaded: pipeline + {len(sample)} sample customers.")
 
 
 # ───────────────────────── helpers ─────────────────────────
@@ -97,7 +97,7 @@ def _contrib_plot(contribs):
     ax.barh(feats, vals, color=colors)
     ax.axvline(0, color="#94a3b8", linewidth=0.7)
     ax.set_xlabel("Contribution to churn logit (red = pushes toward churn)")
-    ax.set_title("Why this prediction — feature drivers")
+    ax.set_title("Why this prediction: feature drivers")
     ax.grid(True, axis="x", alpha=0.3)
     fig.tight_layout()
     tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
@@ -132,12 +132,12 @@ def score(*values):
 # ───────────────────────── load preset customer ─────────────────────────
 def _label_for_customer(row):
     actual = "Exited" if int(row[TARGET]) == 1 else "Stayed"
-    return f"[{actual}] Customer {int(row['CustomerId'])} — age {int(row['Age'])}, " \
+    return f"[{actual}] Customer {int(row['CustomerId'])}, age {int(row['Age'])}, " \
            f"{row['Location']}, model says {row['_predicted_churn_proba'] * 100:.0f}%"
 
 
 sample["_label"] = sample.apply(_label_for_customer, axis=1)
-# Order: most interesting first — biggest disagreement between actual and prediction.
+# Order: most interesting first, biggest disagreement between actual and prediction.
 sample["_interest"] = (sample[TARGET] - sample["_predicted_churn_proba"]).abs()
 sample = sample.sort_values("_interest", ascending=False).reset_index(drop=True)
 CUSTOMER_LABELS = sample["_label"].tolist()
@@ -150,9 +150,9 @@ def load_customer(label):
 
 # ───────────────────────── UI ─────────────────────────
 HEAD = (
-    "# Bank Customer Churn — What-If Calculator\n"
+    "# Bank Customer Churn: What-If Calculator\n"
     "Pick a real customer from the dataset (or just tweak the inputs from scratch). "
-    "The model re-scores live on every change — no Predict button. The driver panel "
+    "The model re-scores live on every change, no Predict button. The driver panel "
     "below shows which inputs are currently pushing the prediction up or down for *this* "
     "customer."
 )
@@ -169,7 +169,7 @@ def num_input(col):
     )
 
 
-with gr.Blocks(theme=gr.themes.Soft(), title="Bank Customer Churn — What If") as demo:
+with gr.Blocks(theme=gr.themes.Soft(), title="Bank Customer Churn: What If") as demo:
     gr.Markdown(HEAD)
 
     customer_dd = gr.Dropdown(
@@ -207,7 +207,7 @@ with gr.Blocks(theme=gr.themes.Soft(), title="Bank Customer Churn — What If") 
         with gr.Column(scale=2):
             churn_card = gr.HTML()
             gr.Markdown(
-                f"*Model: Logistic Regression, 5-fold stratified CV — "
+                f"*Model: Logistic Regression, 5-fold stratified CV: "
                 f"Accuracy {metrics['accuracy']['mean']:.3f} · "
                 f"F1 {metrics['f1']['mean']:.3f} · "
                 f"ROC-AUC {metrics['roc_auc']['mean']:.3f}*"

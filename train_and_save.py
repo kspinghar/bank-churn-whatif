@@ -108,7 +108,7 @@ interp = {
 (ART / "interpretability.json").write_text(json.dumps(interp, indent=2))
 
 # ───────────────────────── sample customers ─────────────────────────
-# Stratified sample of N customers — half exited, half stayed — so the
+# Stratified sample of N customers (half exited, half stayed) so the
 # dropdown has interesting examples on both sides.
 print(f"\nSampling {N_SAMPLE_CUSTOMERS} customers (stratified by Exited)...")
 rng = np.random.RandomState(SEED)
